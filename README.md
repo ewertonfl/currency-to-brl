@@ -1,18 +1,20 @@
 # Currency to BRL
 
-A simple Python script that fetches current exchange rates from AwesomeAPI and returns LATAM currency conversion values to Brazilian Real in JSON format.
+A simple Python script that fetches current exchange rates from AwesomeAPI and returns currency conversion values to Brazilian Real in JSON format.
 
-The project was created to quickly compare exchange rates from LATAM countries against BRL, including both conversion directions:
+The project was created to quickly compare exchange rates from USD and selected LATAM currencies against BRL, including both conversion directions:
 
 ```txt
-1 local currency = X BRL
-1 BRL = X local currency
+1 foreign currency = X BRL
+1 BRL = X foreign currency
 ```
 
 ## Supported countries and currencies
 
 | Country | Currency | Pair |
 |---|---:|---:|
+| United States | USD | USD-BRL |
+| Argentina | ARS | ARS-BRL |
 | Colombia | COP | COP-BRL |
 | Peru | PEN | PEN-BRL |
 | Ecuador | USD | USD-BRL |
@@ -31,8 +33,8 @@ The script:
 - Requests the latest exchange rates from AwesomeAPI.
 - Converts the returned values into a clean JSON structure.
 - Returns both exchange directions:
-  - local currency to BRL
-  - BRL to local currency
+  - foreign currency to BRL
+  - BRL to foreign currency
 - Includes bid, ask, high, low, variation, percentage variation, quote date, and timestamp.
 
 ## Requirements
@@ -102,7 +104,7 @@ AWESOME_API_KEY=your_api_key_here
 Run:
 
 ```bash
-python cotacoes.py
+python currency_to_brl.py
 ```
 
 The script will print a JSON response with the current exchange rates.
@@ -112,9 +114,9 @@ The script will print a JSON response with the current exchange rates.
 ```json
 {
   "base": "BRL",
-  "description": "Value of 1 foreign currency unit converted to Brazilian Real",
+  "description": "Currency conversion values between LATAM currencies and Brazilian Real.",
   "source": "AwesomeAPI",
-  "consulted_at": "2026-05-05T14:54:51.080526",
+  "consulted_at": "2026-05-05T15:07:58.986103",
   "quotes": [
     {
       "country": "Colombia",
@@ -161,7 +163,7 @@ Example:
 This field is useful when comparing against systems that store exchange rates as:
 
 ```txt
-BRL -> local currency
+BRL -> foreign currency
 ```
 
 ## Exchange rate direction
@@ -169,13 +171,13 @@ BRL -> local currency
 AwesomeAPI returns exchange rates in this direction:
 
 ```txt
-1 local currency = X BRL
+1 foreign currency = X BRL
 ```
 
 This project also calculates the inverse direction:
 
 ```txt
-1 BRL = X local currency
+1 BRL = X foreign currency
 ```
 
 The inverse value is calculated as:
@@ -195,11 +197,12 @@ Example:
 
 ```txt
 currency-to-brl/
-├── cotacoes.py
+├── currency_to_brl.py
 ├── README.md
 ├── requirements.txt
 ├── .env.example
-└── .gitignore
+├── .gitignore
+└── LICENSE
 ```
 
 ## Dependencies
@@ -245,7 +248,7 @@ If this is a new local repository, run:
 git init
 git remote add origin https://github.com/ewertonfl/currency-to-brl.git
 git branch -M main
-git add README.md requirements.txt .gitignore .env.example cotacoes.py
+git add README.md requirements.txt .gitignore .env.example currency_to_brl.py LICENSE
 git commit -m "Document setup and AwesomeAPI usage"
 git push -u origin main
 ```
@@ -254,7 +257,7 @@ If the remote repository already exists and has files, run:
 
 ```bash
 git pull origin main --rebase
-git add README.md requirements.txt .gitignore .env.example cotacoes.py
+git add README.md requirements.txt .gitignore .env.example currency_to_brl.py LICENSE
 git commit -m "Document setup and AwesomeAPI usage"
 git push -u origin main
 ```

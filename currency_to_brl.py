@@ -13,6 +13,18 @@ if not API_KEY:
     raise Exception("AWESOME_API_KEY was not found in the .env file.")
 
 CURRENCIES = {
+    "united_states": {
+        "country": "United States",
+        "currency": "USD",
+        "currency_name": "US Dollar",
+        "pair": "USD-BRL"
+    },
+    "argentina": {
+        "country": "Argentina",
+        "currency": "ARS",
+        "currency_name": "Argentine Peso",
+        "pair": "ARS-BRL"
+    },
     "colombia": {
         "country": "Colombia",
         "currency": "COP",
@@ -67,7 +79,7 @@ def decimal_to_string(value: Decimal, places: int | None = None) -> str:
 
 
 def fetch_exchange_rates() -> dict:
-    pairs = ",".join(currency_data["pair"] for currency_data in CURRENCIES.values())
+    pairs = ",".join(dict.fromkeys(currency_data["pair"] for currency_data in CURRENCIES.values()))
 
     url = f"https://economia.awesomeapi.com.br/json/last/{pairs}"
 

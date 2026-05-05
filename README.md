@@ -228,40 +228,6 @@ Currencies with lower liquidity may return older quote timestamps compared to ma
 
 For commercial, accounting, tax, or financial-critical usage, always validate AwesomeAPI's current terms, limits, and commercial usage conditions before using this data in production.
 
-## Security
-
-Do not commit sensitive credentials.
-
-Make sure `.env` is listed in `.gitignore`:
-
-```gitignore
-.env
-```
-
-Only commit `.env.example`.
-
-## Git commands
-
-If this is a new local repository, run:
-
-```bash
-git init
-git remote add origin https://github.com/ewertonfl/currency-to-brl.git
-git branch -M main
-git add README.md requirements.txt .gitignore .env.example currency_to_brl.py LICENSE
-git commit -m "Document setup and AwesomeAPI usage"
-git push -u origin main
-```
-
-If the remote repository already exists and has files, run:
-
-```bash
-git pull origin main --rebase
-git add README.md requirements.txt .gitignore .env.example currency_to_brl.py LICENSE
-git commit -m "Document setup and AwesomeAPI usage"
-git push -u origin main
-```
-
 ## License
 
 MIT
